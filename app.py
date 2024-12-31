@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from msrest.authentication import CognitiveServicesCredentials
