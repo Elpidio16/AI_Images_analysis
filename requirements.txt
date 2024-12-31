@@ -1,4 +1,4 @@
-Flask==1.0.2
-azure-cognitiveservices-vision==0.2.0
-msrest==0.6.6
+Flask
+azure-cognitiveservices-vision
+msrest
 
