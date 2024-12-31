@@ -26,9 +26,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Déploiement sur Vercel
+
+      # Déploiement sur Vercel avec confirmation automatique
       - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25.2.0  # Utilisation de la version v25.2.0
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }} --name "ai-images-analysis" --confirm
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx vercel@25.2.0 --token ${{ secrets.VERCEL_TOKEN }} --name "ai-images-analysis" --confirm
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+          
