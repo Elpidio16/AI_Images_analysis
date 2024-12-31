@@ -10,25 +10,25 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      # Étape 1 : Checkout du code source
+      # Checkout du code source
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Étape 2 : Installer Python
+      # Installation de Python
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      # Étape 3 : Installer les dépendances
+      # Installation des dépendances
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Étape 4 : Déployer sur Vercel
+      # Déploiement sur Vercel
       - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v21
+        uses: amondnet/vercel-action@v25.2.0  # Utilisation de la version v25.2.0
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
