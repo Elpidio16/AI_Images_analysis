@@ -7,8 +7,9 @@ import base64
 app = Flask(__name__)
 
 # Configuration Azure
-subscription_key = "9mLygjc4zRJSMevSQxL9p4jEzbmDoShQ0dgUM9JgisHb8dfjSOQ7JQQJ99ALAC5RqLJXJ3w3AAAFACOGRfCV"
-endpoint = "https://aiinno-computervision-elpidio-dev.cognitiveservices.azure.com/"
+# Récupérer les clés stockées comme variables d'environnement dans Vercel
+subscription_key = os.getenv("AZURE_SUBSCRIPTION_KEY")
+endpoint = os.getenv("AZURE_ENDPOINT")
 computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
 
 @app.route('/')
