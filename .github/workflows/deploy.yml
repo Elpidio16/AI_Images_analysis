@@ -29,6 +29,6 @@ jobs:
       # Déploiement sur Vercel avec confirmation automatique
       - name: Deploy to Vercel
         run: |
-          npx vercel@25.2.0 --token ${{ secrets.VERCEL_TOKEN }} --confirm
+          npx vercel@25.2.0 --token ${{ secrets.VERCEL_TOKEN }} --name "ai-images-analysis" --confirm
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
