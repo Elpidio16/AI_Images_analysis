@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse d'Images</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="d-flex align-items-center justify-content-center bg-light" style="min-height: 100vh;">
+    <div class="text-center" style="width: 100%; max-width: 500px;">
+        <!-- Texte de présentation avec icône -->
+        <div class="mb-4">
+            <img class="mb-3" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="Bootstrap Icon" width="72" height="72">
+            <h2>Analysez vos images facilement</h2>
+            <p class="text-muted">
+                Téléchargez une image et laissez notre IA vous fournir une analyse détaillée.
+            </p>
+        </div>
+
+        <!-- Formulaire pour soumettre une image -->
+        <form class="form-image-upload p-4 rounded shadow bg-white" action="/analyze" method="POST" enctype="multipart/form-data">
+            <h1 class="h5 mb-3 font-weight-normal">Soumettez une image</h1>
+            
+            <!-- Champ de sélection de fichier -->
+            <div class="form-group">
+                <input type="file" id="imageInput" name="image" class="form-control mb-3" accept="image/*" required>
+            </div>
+
+            <!-- Bouton de soumission -->
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Analyser l'image</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2024</p>
+        </form>
+    </div>
+</body>
+</html>
+
