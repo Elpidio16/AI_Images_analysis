@@ -9,7 +9,6 @@
 <body class="bg-light">
     <div class="container py-5">
         <div class="text-center mb-4">
-            <!-- <img class="mb-3" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="Bootstrap Icon" width="72" height="72">  -->
             <h2>Résultats de l'Analyse</h2>
             <p class="text-muted">Découvrez les détails de l'image soumise.</p>
         </div>
@@ -18,6 +17,7 @@
             <div class="card-body text-center">
                 <!-- Affichage de l'image -->
                 <img src="data:image/jpeg;base64,{{ image_data }}" alt="Image analysée" class="img-fluid mb-4" style="max-height: 400px; object-fit: contain;">
+                
                 <!-- Description -->
                 <h5 class="card-title">Description :</h5>
                 <p>{{ description }}</p>
@@ -33,9 +33,11 @@
                 <!-- Objets détectés -->
                 <h5 class="card-title mt-4">Objets détectés :</h5>
                 <ul class="list-group">
-                    {% for obj, confidence in objects %}
+                    {% for obj in objects %}
                         <li class="list-group-item">
-                            <strong>{{ obj }}</strong> - Confiance : {{ confidence | round(2) }}
+                            <strong>{{ obj.object }}</strong> - Confiance : {{ obj.confidence | round(2) }}<br>
+                            Coordonnées : X: {{ obj.rectangle.x }}, Y: {{ obj.rectangle.y }}<br>
+                            Taille : {{ obj.rectangle.w }} x {{ obj.rectangle.h }}
                         </li>
                     {% endfor %}
                 </ul>
@@ -46,7 +48,6 @@
                 <br>
                 <p class="mt-3 text-muted">&copy; ELPIDIO LISSASSI 2024. Tous droits réservés.</p>
             </div>
-            
         </div>
     </div>
 </body>

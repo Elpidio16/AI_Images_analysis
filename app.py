@@ -8,7 +8,6 @@ import base64
 app = Flask(__name__)
 
 # Configuration Azure
-# Récupérer les clés stockées comme variables d'environnement dans Vercel
 subscription_key = os.getenv("AZURE_SUBSCRIPTION_KEY")
 endpoint = os.getenv("AZURE_ENDPOINT")
 computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
@@ -38,8 +37,20 @@ def analyze_image():
 
     description = analysis_result.description.captions[0].text if analysis_result.description.captions else "Pas de description disponible."
     tags = [tag.name for tag in analysis_result.tags]
-    objects = [(obj.object_property, obj.confidence) for obj in analysis_result.objects]
     
+    # Affichage des objets détectés avec leurs coordonnées et niveau de confiance
+    objects = []
+    for obj in analysis_result.objects:
+        object_info = {
+            "object": obj.object_property,
+            "confidence": obj.confidence,
+            "rectangle": obj.rectangle  # Les coordonnées du rectangle entourant l'objet
+        }
+        objects.append(object_info)
+
+    # Debug : Afficher les objets pour vérifier les résultats
+    print("Objets détectés:", objects)
+
     return render_template('result.html', image_data=encoded_image_data, description=description, tags=tags, objects=objects)
 
 if __name__ == '__main__':
